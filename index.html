@@ -15,49 +15,23 @@
             margin: 0;
         }
 
-        .login-container, .admin-panel {
+        .admin-panel {
             background: #fff;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             width: 350px;
             text-align: center;
-            display: none;
         }
 
-        .admin-panel {
-            display: none;
-        }
-
-        .login-container.active, .admin-panel.active {
-            display: block;
-        }
-
-        .login-container h2, .admin-panel h2 {
+        .admin-panel-title {
+            font-size: 28px;
+            font-weight: bold;
             margin-bottom: 20px;
             color: #333;
-            font-size: 24px;
-            font-weight: 600;
         }
 
-        .login-container label {
-            display: block;
-            text-align: left;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555;
-        }
-
-        .login-container input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-
-        .login-container button, .admin-panel button {
+        .admin-panel button {
             width: 100%;
             padding: 12px;
             background-color: #4CAF50;
@@ -70,83 +44,21 @@
             transition: background-color 0.3s ease;
         }
 
-        .login-container button:hover, .admin-panel button:hover {
+        .admin-panel button:hover {
             background-color: #45a049;
-        }
-
-        #errorMessage {
-            color: red;
-            margin-top: 10px;
-            font-size: 14px;
-        }
-
-        .admin-panel-title {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="login-container active" id="loginContainer">
-        <h2>লগইন করুন</h2>
-        <form id="loginForm">
-            <label for="username">ইউজারনেম:</label>
-            <input type="text" id="username" name="username" placeholder="ইউজারনেম লিখুন" required>
-            
-            <label for="password">পাসওয়ার্ড:</label>
-            <input type="password" id="password" name="password" placeholder="পাসওয়ার্ড লিখুন" required>
-            
-            <button type="submit">লগইন</button>
-            <p id="errorMessage"></p>
-        </form>
-    </div>
 
-    <div class="admin-panel" id="adminPanel">
+    <div class="admin-panel">
         <div class="admin-panel-title">RAHIYAN ADMIN PANEL</div>
-        <button id="tplinkButton">TP-Link</button>
-        <button id="mercusysButton">Mercusys</button>
-        <button>NODMCU</button>
-        <button>Personal</button>
-        <button id="vipButton">VIP</button>
+        <button onclick="window.location.href='http://192.168.0.1'">TP-Link</button>
+        <button onclick="window.location.href='http://192.168.1.1'">Mercusys</button>
+        <button onclick="window.location.href='http://192.168.4.1'">NODMCU</button>
+        <button onclick="window.location.href='http://192.168.192.1'">Personal</button>
+        <button onclick="window.location.href='http://192.168.0.1'">VIP</button>
     </div>
 
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", function(event){
-            event.preventDefault();
-
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-            const errorMessage = document.getElementById("errorMessage");
-
-            if(username === "nasrin" && password === "rahiyan") {
-                errorMessage.style.color = "green";
-                errorMessage.textContent = "লগইন সফল!";
-                
-                // লগইন কন্টেইনার লুকিয়ে ফেলুন এবং অ্যাডমিন প্যানেল দেখান
-                document.getElementById("loginContainer").classList.remove("active");
-                document.getElementById("adminPanel").classList.add("active");
-            } else {
-                errorMessage.textContent = "ইউজারনেম বা পাসওয়ার্ড সঠিক নয়!";
-            }
-        });
-
-        // TP-Link বাটনের জন্য ইভেন্ট লিসেনার
-        document.getElementById("tplinkButton").addEventListener("click", function() {
-            window.location.href = "http://192.168.0.1"; // TP-Link রাউটারের এডমিন প্যানেল লিংক
-        });
-
-        // Mercusys বাটনের জন্য ইভেন্ট লিসেনার
-        document.getElementById("mercusysButton").addEventListener("click", function() {
-            window.location.href = "http://192.168.1.1"; // Mercusys রাউটারের এডমিন প্যানেল লিংক
-        });
-
-        // VIP বাটনের জন্য ইভেন্ট লিসেনার (TP-Link এর জন্য আবার)
-        document.getElementById("vipButton").addEventListener("click", function() {
-            window.location.href = "http://192.168.0.1"; // TP-Link রাউটারের এডমিন প্যানেল লিংক
-        });
-    </script>
 </body>
-  </html>
-  
+</html>
